@@ -3,6 +3,7 @@ package com.dhananjay.cashkaro_poc.utils;
 import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.models.Deal;
 import com.dhananjay.cashkaro_poc.models.OfferGroup;
+import com.dhananjay.cashkaro_poc.models.TopCategory;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
 
 import java.util.ArrayList;
@@ -64,4 +65,20 @@ public class DemoDataCreator {
         return offerGroups;
     }
 
+    public static ArrayList<TopCategory> createDemoTopCategories() {
+        ArrayList<TopCategory> topCategories = new ArrayList<>();
+        TopCategory topCategory_1 = new TopCategory(1, "Clothing", R.drawable.cloth);
+        topCategories.add(topCategory_1);
+        TopCategory topCategory_2 = new TopCategory(2, "Electronics", R.drawable.electronics);
+        topCategories.add(topCategory_2);
+        TopCategory topCategory_3 = new TopCategory(3, "Fashion", R.drawable.fashion);
+        topCategories.add(topCategory_3);
+        TopCategory topCategory_4 = new TopCategory(4, "Recharge", R.drawable.recharge);
+        topCategories.add(topCategory_4);
+        TopCategory topCategory_5 = new TopCategory(5, "Travel", R.drawable.travel);
+        topCategories.add(topCategory_5);
+        TopCategory topCategory_6 = new TopCategory(6, "Grocery", R.drawable.grocery);
+        topCategories.add(topCategory_6);
+        return topCategories;
+    }
 }

@@ -13,6 +13,8 @@ import android.widget.ImageView;
 
 import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
+import com.dhananjay.cashkaro_poc.utils.listeners.GridItemClickListener;
+import com.dhananjay.cashkaro_poc.utils.listeners.RecyclerViewItemClickListener;
 
 import java.util.ArrayList;
 
@@ -21,7 +23,7 @@ public class TopOffersPagerAdapter extends PagerAdapter {
     private Context mContext;
     private ArrayList<TopOffer> topOffers;
     private LayoutInflater layoutInflater;
-    ;
+    private GridItemClickListener clickListener;
 
     public TopOffersPagerAdapter(Context context, ArrayList<TopOffer> topOffers) {
         mContext = context;
@@ -30,12 +32,18 @@ public class TopOffersPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        TopOffer topOffer = topOffers.get(position);
-        View itemView = layoutInflater.inflate(R.layout.item_top_offer, container, false);
+    public Object instantiateItem(ViewGroup container, final int position) {
+        final TopOffer topOffer = topOffers.get(position);
+        final View itemView = layoutInflater.inflate(R.layout.item_top_offer, container, false);
         ImageView ivTopOffer = (ImageView) itemView.findViewById(R.id.iv_top_offer);
         ivTopOffer.setImageResource(topOffer.getDrawableId());
         container.addView(itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onClick(itemView, topOffer);
+            }
+        });
         return itemView;
     }
 
@@ -53,5 +61,9 @@ public class TopOffersPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
+    }
+
+    public void setClickListener(GridItemClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 }

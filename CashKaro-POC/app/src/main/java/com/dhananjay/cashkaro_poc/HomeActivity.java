@@ -5,28 +5,32 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.GridView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.dhananjay.cashkaro_poc.adapters.OffersGroupAdapter;
+import com.dhananjay.cashkaro_poc.adapters.TopCategoriesGridAdapter;
 import com.dhananjay.cashkaro_poc.adapters.TopOffersPagerAdapter;
 import com.dhananjay.cashkaro_poc.models.OfferGroup;
+import com.dhananjay.cashkaro_poc.models.TopCategory;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
 import com.dhananjay.cashkaro_poc.utils.DemoDataCreator;
+import com.dhananjay.cashkaro_poc.utils.listeners.GridItemClickListener;
 
 import java.util.ArrayList;
 
 /**
  * Created by Dhananjay on 17-04-2017.
  */
-public class HomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+public class HomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener, GridItemClickListener {
 
     private RecyclerView rvDealGroup;
     private AutoScrollViewPager vpTopOffers;
-    private GridView gvTopCategories;
+    private FullHeightGridView gvTopCategories;
     private ArrayList<TopOffer> topOffers;
     private ArrayList<OfferGroup> offerGroups;
+    private ArrayList<TopCategory> topCategories;
     private ImageView[] dots;
     private int dotsCount;
     private TopOffersPagerAdapter topOffersPagerAdapter;
@@ -44,6 +48,7 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
     private void initFields() {
         topOffers = DemoDataCreator.createDemoTopOffers();
         offerGroups = DemoDataCreator.createDemoOffers();
+        topCategories = DemoDataCreator.createDemoTopCategories();
         topOffersPagerAdapter = new TopOffersPagerAdapter(this, topOffers);
         vpTopOffers.setAdapter(topOffersPagerAdapter);
         vpTopOffers.startAutoScroll();
@@ -55,6 +60,8 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         rvDealGroup.setItemAnimator(new DefaultItemAnimator());
 //        rvDealGroup.setNestedScrollingEnabled(false);
         rvDealGroup.setAdapter(new OffersGroupAdapter(offerGroups));
+
+        gvTopCategories.setAdapter(new TopCategoriesGridAdapter(topCategories));
     }
 
     private void setUiPageViewController() {
@@ -77,7 +84,7 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
     private void initViews() {
         vpTopOffers = (AutoScrollViewPager) findViewById(R.id.vp_top_offers);
         rvDealGroup = (RecyclerView) findViewById(R.id.rv_deal_group);
-        gvTopCategories = (GridView) findViewById(R.id.gv_top_categories);
+        gvTopCategories = (FullHeightGridView) findViewById(R.id.gv_top_categories);
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
     }
 
@@ -97,5 +104,10 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onClick(View view, TopOffer topOffer) {
+        OfferActivity.start(this, topOffer);
     }
 }

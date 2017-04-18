@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/ll_banner"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/banner"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@drawable/banner"
+                android:orientation="vertical" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@color/transparent_black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|bottom"
+                    android:src="@drawable/deal_amazon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:text="Upto 70% off all Books and Stationery on Snapdeal + Upto 7.5% Extra Cashback"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    style="@style/AppTheme.RoundedCornerButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:minHeight="0dp"
+                    android:padding="8dp"
+                    android:text="Shop Now"
+                    android:textAppearance="?android:textAppearanceSmall" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_cashback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_banner"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_cashback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="Show Cashback Rates"
+                android:textColor="@color/gray_1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_cashback"
+                android:src="@drawable/recharge" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_offer_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_cashback"
+            android:layout_marginLeft="10dp"
+            android:text="Top Amazon Offers"
+            android:textColor="@color/black" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_deal_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_offer_title"
+            android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+    </RelativeLayout>
+</ScrollView>

@@ -57,7 +57,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.MyViewHolder
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_deal, parent, false);
-        itemView.getLayoutParams().width = getScreenSize(parent.getContext()).x / 2 - (int) (2 * CommonUtils.convertPixelsToDp(90, parent.getContext()));
+//        itemView.getLayoutParams().width = getScreenSize(parent.getContext()).x / 2 - (int) (2 * CommonUtils.convertPixelsToDp(90, parent.getContext()));
         return new MyViewHolder(itemView);
     }
 

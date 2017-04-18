@@ -7,7 +7,7 @@
     android:background="@color/app_background"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.dhananjay.cashkaro_poc.BaseActivity"
+    tools:context="com.dhananjay.cashkaro_poc.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
     <RelativeLayout
@@ -42,9 +42,10 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_deal_group"
             android:layout_width="match_parent"
-            android:nestedScrollingEnabled="false"
             android:layout_height="match_parent"
-            android:layout_below="@+id/fm_pager" />
+            android:layout_below="@+id/fm_pager"
+            android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="false" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,13 +61,25 @@
                 android:text="@string/top_categories"
                 android:textColor="@color/gray_2" />
 
-            <GridView
-                android:id="@+id/gv_top_categories"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_white_rounded">
 
-            </GridView>
+                <com.dhananjay.cashkaro_poc.FullHeightGridView
+                    android:id="@+id/gv_top_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:columnWidth="80dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="0.5dp"
+                    android:numColumns="auto_fit"
+                    android:padding="5dp"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="0.5dp" />
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

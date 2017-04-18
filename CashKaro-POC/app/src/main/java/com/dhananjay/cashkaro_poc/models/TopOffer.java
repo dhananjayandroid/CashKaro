@@ -1,9 +1,11 @@
 package com.dhananjay.cashkaro_poc.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Dhananjay on 17-04-2017.
  */
-public class TopOffer {
+public class TopOffer implements Serializable{
     private int offerId;
     private String offerLink;
     private String imageLink;

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
+    android:background="@color/white"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/ic_menu_camera" />
+        android:id="@+id/iv_category"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
 
     <TextView
+        android:id="@+id/tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Clothing"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="#1BA9CF"
-        android:textStyle="bold" />
+        android:textColor="@color/blue"/>
 </LinearLayout>
