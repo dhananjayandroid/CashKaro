@@ -54,8 +54,9 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         vpTopOffers.startAutoScroll();
         vpTopOffers.addOnPageChangeListener(this);
         setUiPageViewController();
+        topOffersPagerAdapter.setClickListener(this);
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         rvDealGroup.setLayoutManager(mLayoutManager);
         rvDealGroup.setItemAnimator(new DefaultItemAnimator());
 //        rvDealGroup.setNestedScrollingEnabled(false);
@@ -108,6 +109,6 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onClick(View view, TopOffer topOffer) {
-        OfferActivity.start(this, topOffer);
+        OfferDealActivity.start(this, topOffer);
     }
 }

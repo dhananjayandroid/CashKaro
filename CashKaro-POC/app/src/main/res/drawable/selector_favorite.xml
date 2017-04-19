@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enterFadeDuration="500"
+    android:exitFadeDuration="500">
+
+    <item android:state_checked="false" android:drawable="@drawable/heart"/>
+    <item android:state_checked="true"  android:drawable="@drawable/heart_sel"/>
+</selector>

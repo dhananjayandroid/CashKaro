@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OfferActivity"
+            android:name=".OfferDealActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|navigation"
             android:label=""
             android:screenOrientation="portrait"
