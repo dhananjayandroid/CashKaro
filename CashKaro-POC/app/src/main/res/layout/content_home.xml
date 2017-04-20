@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/app_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.dhananjay.cashkaro_poc.HomeActivity"
+    tools:context="com.dhananjay.cashkaro_poc.ui.activities.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
     <RelativeLayout
@@ -19,30 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="120dp" />
 -->
-        <FrameLayout
-            android:id="@+id/fm_pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <com.dhananjay.cashkaro_poc.AutoScrollViewPager
-                android:id="@+id/vp_top_offers"
-                android:layout_width="match_parent"
-                android:layout_height="120dp" />
-
-            <LinearLayout
-                android:id="@+id/viewPagerCountDots"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:gravity="center|bottom"
-                android:orientation="horizontal" />
-        </FrameLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_deal_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/fm_pager"
             android:layout_marginTop="10dp"
             android:nestedScrollingEnabled="false" />
 

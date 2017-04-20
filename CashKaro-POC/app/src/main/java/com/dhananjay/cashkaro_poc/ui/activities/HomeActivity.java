@@ -1,4 +1,4 @@
-package com.dhananjay.cashkaro_poc;
+package com.dhananjay.cashkaro_poc.ui.activities;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -9,13 +9,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.dhananjay.cashkaro_poc.AutoScrollViewPager;
+import com.dhananjay.cashkaro_poc.FullHeightGridView;
+import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.adapters.OffersGroupAdapter;
 import com.dhananjay.cashkaro_poc.adapters.TopCategoriesGridAdapter;
 import com.dhananjay.cashkaro_poc.adapters.TopOffersPagerAdapter;
 import com.dhananjay.cashkaro_poc.models.OfferGroup;
 import com.dhananjay.cashkaro_poc.models.TopCategory;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
-import com.dhananjay.cashkaro_poc.utils.DemoDataCreator;
+import com.dhananjay.cashkaro_poc.utils.DemoDataCreatorUtils;
 import com.dhananjay.cashkaro_poc.utils.listeners.GridItemClickListener;
 
 import java.util.ArrayList;
@@ -38,28 +41,32 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_home);
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_home);
         initViews();
         initFields();
+        setUpActionBarWithDrawer();
+        initListeners();
+    }
+
+    private void initListeners() {
+        vpTopOffers.addOnPageChangeListener(this);
+        topOffersPagerAdapter.setClickListener(this);
     }
 
     private void initFields() {
-        topOffers = DemoDataCreator.createDemoTopOffers();
-        offerGroups = DemoDataCreator.createDemoOffers();
-        topCategories = DemoDataCreator.createDemoTopCategories();
+        topOffers = DemoDataCreatorUtils.createDemoTopOffers();
+        offerGroups = DemoDataCreatorUtils.createDemoOffers();
+        topCategories = DemoDataCreatorUtils.createDemoTopCategories();
         topOffersPagerAdapter = new TopOffersPagerAdapter(this, topOffers);
         vpTopOffers.setAdapter(topOffersPagerAdapter);
         vpTopOffers.startAutoScroll();
-        vpTopOffers.addOnPageChangeListener(this);
+
         setUiPageViewController();
-        topOffersPagerAdapter.setClickListener(this);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         rvDealGroup.setLayoutManager(mLayoutManager);
         rvDealGroup.setItemAnimator(new DefaultItemAnimator());
-//        rvDealGroup.setNestedScrollingEnabled(false);
         rvDealGroup.setAdapter(new OffersGroupAdapter(offerGroups));
 
         gvTopCategories.setAdapter(new TopCategoriesGridAdapter(topCategories));
@@ -91,7 +98,6 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
     }
 
     @Override
@@ -104,7 +110,6 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
     }
 
     @Override

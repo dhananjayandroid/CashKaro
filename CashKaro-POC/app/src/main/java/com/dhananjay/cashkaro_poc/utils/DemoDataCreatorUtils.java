@@ -11,21 +11,21 @@ import java.util.ArrayList;
 /**
  * Created by Dhananjay on 17-04-2017.
  */
-public class DemoDataCreator {
+public class DemoDataCreatorUtils {
 
     public static ArrayList<TopOffer> createDemoTopOffers() {
         ArrayList<TopOffer> topOffers = new ArrayList<>();
-        TopOffer topOffer_1 = new TopOffer(1, "http://www.flipkart.com", R.drawable.flipkart_top_offer);
+        TopOffer topOffer_1 = new TopOffer(1, "http://www.flipkart.com", R.drawable.flipkart_top_offer, "Flipkart", R.drawable.deal_flipkart);
         topOffers.add(topOffer_1);
-        TopOffer topOffer_2 = new TopOffer(2, "http://www.amazon.in", R.drawable.amazon_top_offer);
+        TopOffer topOffer_2 = new TopOffer(2, "http://www.amazon.in", R.drawable.amazon_top_offer, "Amazon", R.drawable.deal_amazon);
         topOffers.add(topOffer_2);
-        TopOffer topOffer_3 = new TopOffer(3, "http://www.jabong.com", R.drawable.jabong_top_offer);
+        TopOffer topOffer_3 = new TopOffer(3, "http://www.jabong.com", R.drawable.jabong_top_offer, "Jabong", R.drawable.deal_jabong);
         topOffers.add(topOffer_3);
-        TopOffer topOffer_4 = new TopOffer(4, "http://www.nykaa.com", R.drawable.nykaa_top_offer);
+        TopOffer topOffer_4 = new TopOffer(4, "http://www.nykaa.com", R.drawable.nykaa_top_offer, "Nykaa", R.drawable.deal_nykaa);
         topOffers.add(topOffer_4);
-        TopOffer topOffer_5 = new TopOffer(5, "http://www.myntra.com", R.drawable.myntra_top_offer);
+        TopOffer topOffer_5 = new TopOffer(5, "http://www.myntra.com", R.drawable.myntra_top_offer, "Myntra", R.drawable.deal_myntra);
         topOffers.add(topOffer_5);
-        TopOffer topOffer_6 = new TopOffer(6, "http://www.shopclues.com", R.drawable.shopclues_top_offer);
+        TopOffer topOffer_6 = new TopOffer(6, "http://www.shopclues.com", R.drawable.shopclues_top_offer, "Shopclues", R.drawable.deal_shopclues);
         topOffers.add(topOffer_6);
         return topOffers;
     }

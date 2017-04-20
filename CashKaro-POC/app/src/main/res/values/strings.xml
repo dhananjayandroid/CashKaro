@@ -10,4 +10,15 @@
     <string name="office_stationery_deals">Office Stationery Deals</string>
     <string name="top_categories">Top Categories</string>
     <string name="view_all_offers">View all Offers (%d)</string>
+
+    <string name="error_fail_connection">Sorry, connection lost. It will be reestablished when the Internet will be available.</string>
+    <string name="deal_txt">Upto 70&#65130; off all the books and stationery on Amazon + Upto 7.5&#65130; Extra Cashback</string>
+    <string name="top_deal_txt">Upto 70&#65130; off all Books and Stationery on %1$s  \n+ Upto 7.5&#65130; Extra Cashback</string>
+    <string name="user_logged_in">User Logged in: %s</string>
+
+
+    <string name="facebook_app_id">595742397291404</string>
+    <string name="error">Error occurred</string>
+    <string name="success">Success..</string>
+    <string name="ok">Okay</string>
 </resources>

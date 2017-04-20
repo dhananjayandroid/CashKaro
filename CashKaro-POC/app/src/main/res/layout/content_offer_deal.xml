@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ns_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background"
@@ -11,62 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
-        <LinearLayout
-            android:id="@+id/ll_cash_back"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:elevation="4dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_cash_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="Show Cashback Rates"
-                    android:textColor="@color/gray_1" />
-
-                <ImageView
-                    android:id="@+id/iv_cash_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/tv_cash_back"
-                    android:layout_alignTop="@+id/tv_cash_back"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/tv_cash_back"
-                    android:src="@drawable/open_arrow" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_cash_back_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="+ Upto 7.5% Extra Cashback"
-                android:textColor="@color/gray_1"
-                android:visibility="gone" />
-        </LinearLayout>
-
         <TextView
             android:id="@+id/tv_offer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_cash_back"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:text="Top Amazon Offers"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/black" />

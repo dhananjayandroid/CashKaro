@@ -85,7 +85,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:padding="10dp"
-            android:text="Upto 70% off all the books and stationery on Amazon + Upto 7.5% Extra Cashback"
+            android:text="@string/deal_txt"
             android:textColor="@color/black" />
 
         <RelativeLayout
