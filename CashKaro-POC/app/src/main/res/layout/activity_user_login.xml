@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.dhananjay.cashkaro_poc.ui.activities.DealLinkActivity">
+    tools:context="com.dhananjay.cashkaro_poc.ui.activities.UserLoginActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,22 +21,29 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/loginButton"
+        <ImageView
+            android:id="@+id/iv_fb_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            facebook:com_facebook_confirm_logout="true"
-            facebook:com_facebook_tooltip_mode="never_display" />
+            android:src="@drawable/fb_login" />
 
         <TextView
             android:id="@+id/tv_fb_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/user_logged_in"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_log_out"
+            style="@style/AppTheme.RoundedCornerButton"
+            android:layout_marginTop="15dp"
+            android:text="@string/log_out"
             android:visibility="gone" />
     </LinearLayout>
 

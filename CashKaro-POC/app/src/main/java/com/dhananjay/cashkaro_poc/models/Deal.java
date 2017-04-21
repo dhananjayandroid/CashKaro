@@ -1,7 +1,9 @@
 package com.dhananjay.cashkaro_poc.models;
 
 /**
- * Created by Dhananjay on 17-04-2017.
+ * Model class for Deal
+ *
+ * @author Dhananjay Kumar
  */
 public class Deal {
     public Deal(int dealId, int dealIconDrawable, boolean isFavorite, String dealDescription, String dealExtra, int offersCount) {

@@ -6,7 +6,11 @@ import android.widget.Toast;
 
 import com.dhananjay.cashkaro_poc.App;
 
-
+/**
+ * This class shows toasts wherever needed in app.
+ *
+ * @author Dhananjay Kumar
+ */
 public class ToastUtils {
 
     public static void shortToast(@StringRes int text) {

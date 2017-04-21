@@ -3,7 +3,9 @@ package com.dhananjay.cashkaro_poc.models;
 import java.util.ArrayList;
 
 /**
- * Created by Dhananjay on 17-04-2017.
+ * Model class for Offer Groups
+ *
+ * @author Dhananjay Kumar
  */
 public class OfferGroup {
     public OfferGroup(ArrayList<Deal> deals, int offerGroupId, String offerTitle) {

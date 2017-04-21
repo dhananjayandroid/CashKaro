@@ -14,13 +14,22 @@ import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
 import com.dhananjay.cashkaro_poc.utils.AppConstants;
 
+
 /**
- * Created by Dhananjay on 17-04-2017.
+ * Activity class for showing deals in web-view extends {@link BaseActivity}
+ *
+ * @author Dhananjay Kumar
  */
 public class DealLinkActivity extends BaseActivity {
     private WebView wvDeal;
     private TopOffer topOffer;
 
+    /**
+     * Start DealLinkActivity.
+     *
+     * @param context  the context
+     * @param topOffer the top offer
+     */
     public static void start(Context context, TopOffer topOffer) {
         Intent intent = new Intent(context, DealLinkActivity.class);
         intent.putExtra(AppConstants.EXTRA_OFFER, topOffer);
@@ -38,12 +47,18 @@ public class DealLinkActivity extends BaseActivity {
         initFields();
     }
 
+    /**
+     * initiate all view elements
+     */
     private void initViews() {
         wvDeal = (WebView) findViewById(R.id.wv_deal);
         topOffer = (TopOffer) getIntent().getSerializableExtra(AppConstants.EXTRA_OFFER);
         title = topOffer.getOfferSite();
     }
 
+    /**
+     * init Fields
+     */
     private void initFields() {
         wvDeal.setWebViewClient(new MyWebClient());
         wvDeal.getSettings().setJavaScriptEnabled(true);
@@ -53,6 +68,9 @@ public class DealLinkActivity extends BaseActivity {
         wvDeal.getSettings().setLoadWithOverviewMode(true);
     }
 
+    /**
+     * My webView client for opening web links
+     */
     private class MyWebClient extends WebViewClient {
         @SuppressWarnings("deprecation")
         @Override
@@ -84,5 +102,11 @@ public class DealLinkActivity extends BaseActivity {
 
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recordScreenView(title + "_web", DealLinkActivity.class.getSimpleName());
     }
 }

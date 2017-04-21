@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.dhananjay.cashkaro_poc.ui.activities.HomeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="?attr/colorPrimary">
 
         <!-- <android.support.v7.widget.Toolbar
              android:id="@+id/toolbar"
@@ -26,7 +27,8 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,8 +135,8 @@
                         android:id="@+id/tv_cash_back_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
                         android:gravity="center"
+                        android:paddingBottom="10dp"
                         android:text="+ Upto 7.5% Extra Cashback"
                         android:textColor="@color/gray_1"
                         android:visibility="gone" />

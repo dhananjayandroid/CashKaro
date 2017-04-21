@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "306622591251",
+    "firebase_url": "https://cashkaro-poc.firebaseio.com",
+    "project_id": "cashkaro-poc",
+    "storage_bucket": "cashkaro-poc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306622591251:android:f34887bdf9033ebd",
+        "android_client_info": {
+          "package_name": "com.dhananjay.cashkaro_poc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306622591251-qt4lnccb38u5si8r3ipfvtn7du3e00mq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dhananjay.cashkaro_poc",
+            "certificate_hash": "55b6ee6cb2d2d7cfd3e05912d1c7de40d52988d1"
+          }
+        },
+        {
+          "client_id": "306622591251-le19kg3c929lu3l7k6f6r40m313qnfs6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2eIa6XHtOriu0PKtLAiQerp9wqhHKA20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306622591251-le19kg3c929lu3l7k6f6r40m313qnfs6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

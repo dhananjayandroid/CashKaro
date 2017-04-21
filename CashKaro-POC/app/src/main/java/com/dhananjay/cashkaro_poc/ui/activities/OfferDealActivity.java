@@ -21,21 +21,32 @@ import com.dhananjay.cashkaro_poc.adapters.OfferDealAdapter;
 import com.dhananjay.cashkaro_poc.models.Deal;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
 import com.dhananjay.cashkaro_poc.utils.AppConstants;
+import com.dhananjay.cashkaro_poc.utils.CommonUtils;
+import com.dhananjay.cashkaro_poc.utils.listeners.RecyclerViewItemClickListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 
 /**
- * Created by Dhananjay on 17-04-2017.
+ * Activity class for OfferDeals extends {@link BaseActivity}
+ *
+ * @author Dhananjay Kumar
  */
-public class OfferDealActivity extends BaseActivity implements View.OnClickListener {
+public class OfferDealActivity extends BaseActivity implements View.OnClickListener, RecyclerViewItemClickListener {
     private TopOffer topOffer;
     private RecyclerView rvDeals;
-    private TextView tvCashBack, tvCashBackDesc, tvTopDeal;
+    private TextView tvCashBackDesc, tvTopDeal;
     private LinearLayout rlCashBack;
     private Button btnShopNow;
     private ImageView ivLogo, ivCashBack;
     private NestedScrollView nsContent;
 
+    /**
+     * Start OfferDealActivity.
+     *
+     * @param context  the context
+     * @param topOffer the top offer
+     */
     public static void start(Context context, TopOffer topOffer) {
         Intent intent = new Intent(context, OfferDealActivity.class);
         intent.putExtra(AppConstants.EXTRA_OFFER, topOffer);
@@ -45,21 +56,26 @@ public class OfferDealActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_bar_offer_deal);
+        setContentView(R.layout.activity_offer_deal);
         initViews();
         initFields();
         setUpActionBarWithUpButton();
         initListeners();
     }
 
+    /**
+     * Initiate all listeners
+     */
     private void initListeners() {
         rlCashBack.setOnClickListener(this);
         btnShopNow.setOnClickListener(this);
     }
 
+    /**
+     * initiate all view elements
+     */
     private void initViews() {
         rvDeals = (RecyclerView) findViewById(R.id.rv_deals);
-        tvCashBack = (TextView) findViewById(R.id.tv_cash_back);
         tvCashBackDesc = (TextView) findViewById(R.id.tv_cash_back_desc);
         tvTopDeal = (TextView) findViewById(R.id.tv_top_deal);
         rlCashBack = (LinearLayout) findViewById(R.id.ll_cash_back);
@@ -69,18 +85,25 @@ public class OfferDealActivity extends BaseActivity implements View.OnClickListe
         nsContent = (NestedScrollView) findViewById(R.id.ns_content);
     }
 
+    /**
+     * init Fields
+     */
     private void initFields() {
         topOffer = (TopOffer) getIntent().getSerializableExtra(AppConstants.EXTRA_OFFER);
         rvDeals.setLayoutManager(new LinearLayoutManager(this));
         rvDeals.setItemAnimator(new DefaultItemAnimator());
-        rvDeals.setAdapter(new OfferDealAdapter(new ArrayList<Deal>()));
+        OfferDealAdapter offerDealAdapter = new OfferDealAdapter(new ArrayList<Deal>());
+        rvDeals.setAdapter(offerDealAdapter);
+        offerDealAdapter.setClickListener(this);
         title = topOffer.getOfferSite();
         ivLogo.setImageResource(topOffer.getSiteLogoDrawable());
-//        tvTopDeal.setText(topOffer.getOfferSite());
         tvTopDeal.setText(String.format(getResources().getString(R.string.top_deal_txt), topOffer.getOfferSite()));
         scrollToTop();
     }
 
+    /**
+     * scroll screen to top
+     */
     private void scrollToTop() {
         nsContent.post(new Runnable() {
             @Override
@@ -90,11 +113,27 @@ public class OfferDealActivity extends BaseActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * Records CashBack selection
+     */
+    private void recordCashBackSeen() {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "" + topOffer.getOfferId());
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, topOffer.getOfferSite());
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "cashBack");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+    }
+
+    /**
+     * Expand Cashback view
+     *
+     * @param v View
+     */
     private void expand(final View v) {
+        recordCashBackSeen();
         v.measure(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         final int targetHeight = v.getMeasuredHeight();
 
-        // Older versions of android (pre API 21) cancel animations for views with a height of 0.
         v.getLayoutParams().height = 1;
         ivCashBack.setImageResource(R.drawable.close_arrow);
         v.setVisibility(View.VISIBLE);
@@ -113,12 +152,16 @@ public class OfferDealActivity extends BaseActivity implements View.OnClickListe
             }
         };
 
-        // 2dp/ms
-        a.setDuration((long) (10* (targetHeight / v.getContext().getResources().getDisplayMetrics().density)));
+        a.setDuration((long) (10 * (targetHeight / v.getContext().getResources().getDisplayMetrics().density)));
         v.startAnimation(a);
     }
 
-    private  void collapse(final View v) {
+    /**
+     * Collapse Cashback view
+     *
+     * @param v View
+     */
+    private void collapse(final View v) {
         ivCashBack.setImageResource(R.drawable.open_arrow);
         final int initialHeight = v.getMeasuredHeight();
 
@@ -159,12 +202,44 @@ public class OfferDealActivity extends BaseActivity implements View.OnClickListe
                     collapse(tvCashBackDesc);
                 break;
             case R.id.btn_shop_now:
-                DealLinkActivity.start(this, topOffer);
+                performShopClick();
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recordScreenView(title + "-deal", OfferDealActivity.class.getSimpleName());
+    }
+
+    /**
+     * Record Offer click
+     */
+    private void recordOfferClick() {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "" + topOffer.getOfferId());
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, topOffer.getOfferSite());
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "offer");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        performShopClick();
+    }
+
+    /**
+     * Perform shop now/Get code click
+     */
+    private void performShopClick() {
+        CommonUtils.sendNotification(this, topOffer.getOfferSite());
+        recordOfferClick();
+        DealLinkActivity.start(this, topOffer);
     }
 }

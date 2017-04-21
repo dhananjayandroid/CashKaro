@@ -3,7 +3,9 @@ package com.dhananjay.cashkaro_poc.models;
 import java.io.Serializable;
 
 /**
- * Created by Dhananjay on 17-04-2017.
+ * Model class for TopOffer
+ *
+ * @author Dhananjay Kumar
  */
 public class TopOffer implements Serializable{
     private int offerId;

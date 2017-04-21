@@ -14,13 +14,20 @@ import com.dhananjay.cashkaro_poc.models.TopCategory;
 import java.util.ArrayList;
 
 /**
- * Created by Dhananjay on 03-03-2017.
+ * This class extends @{@link BaseAdapter} and
+ * serves as an adapter for the category grid
+ *
+ * @author Dhananjay Kumar
  */
-
 public class TopCategoriesGridAdapter extends BaseAdapter {
 
     private ArrayList<TopCategory> topCategories = new ArrayList<>();
 
+    /**
+     * Instantiates a new Top categories grid adapter.
+     *
+     * @param topCategories the top categories
+     */
     public TopCategoriesGridAdapter(ArrayList<TopCategory> topCategories) {
         this.topCategories = topCategories;
     }
@@ -68,6 +75,17 @@ public class TopCategoriesGridAdapter extends BaseAdapter {
         TopCategory topCategory = topCategories.get(i);
         holder.tvCategory.setText(topCategory.getCategoryName());
         holder.ivCategory.setImageResource(topCategory.getDrawableId());
+    }
+
+    /**
+     * Update content.
+     *
+     * @param topCategories the top categories
+     */
+    public void updateContent(ArrayList<TopCategory> topCategories) {
+        this.topCategories.clear();
+        this.topCategories.addAll(topCategories);
+        notifyDataSetChanged();
     }
 
 }

@@ -12,19 +12,31 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.dhananjay.cashkaro_poc.R;
+import com.dhananjay.cashkaro_poc.models.OfferGroup;
 import com.dhananjay.cashkaro_poc.models.TopOffer;
-import com.dhananjay.cashkaro_poc.utils.listeners.GridItemClickListener;
-import com.dhananjay.cashkaro_poc.utils.listeners.RecyclerViewItemClickListener;
+import com.dhananjay.cashkaro_poc.utils.listeners.PageClickListener;
 
 import java.util.ArrayList;
 
+/**
+ * This class extends @{@link PagerAdapter} and
+ * serves as an adapter for the Carousel view
+ *
+ * @author Dhananjay Kumar
+ */
 public class TopOffersPagerAdapter extends PagerAdapter {
 
     private Context mContext;
     private ArrayList<TopOffer> topOffers;
     private LayoutInflater layoutInflater;
-    private GridItemClickListener clickListener;
+    private PageClickListener clickListener;
 
+    /**
+     * Instantiates a new Top offers pager adapter.
+     *
+     * @param context   the context
+     * @param topOffers the top offers
+     */
     public TopOffersPagerAdapter(Context context, ArrayList<TopOffer> topOffers) {
         mContext = context;
         this.topOffers = topOffers;
@@ -41,7 +53,7 @@ public class TopOffersPagerAdapter extends PagerAdapter {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickListener.onClick(itemView, topOffer);
+                clickListener.onPageClick(itemView, topOffer);
             }
         });
         return itemView;
@@ -63,7 +75,23 @@ public class TopOffersPagerAdapter extends PagerAdapter {
         container.removeView((View) object);
     }
 
-    public void setClickListener(GridItemClickListener clickListener) {
+    /**
+     * Sets click listener.
+     *
+     * @param clickListener the click listener
+     */
+    public void setClickListener(PageClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    /**
+     * Update content.
+     *
+     * @param topOffers the top offers
+     */
+    public void updateContent(ArrayList<TopOffer> topOffers) {
+        this.topOffers.clear();
+        this.topOffers.addAll(topOffers);
+        notifyDataSetChanged();
     }
 }

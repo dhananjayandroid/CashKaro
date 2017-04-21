@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.GridView;
 
 /**
- * Created by Dhananjay on 03-03-2017.
+ * {@link GridView} class which always have full height
+ *
+ * @author Dhananjay Kumar
  */
 public class FullHeightGridView extends GridView {
 
@@ -61,46 +63,5 @@ public class FullHeightGridView extends GridView {
         }
         super.dispatchDraw(canvas);
     }
-  /*  private Bitmap background;
-
-    private int mShelfWidth;
-    private int mShelfHeight;
-
-
-    public void setBackground(Bitmap background) {
-        this.background = background;
-
-        mShelfWidth = background.getWidth();
-        mShelfHeight = background.getHeight();
-    }
-*/
-
-    /*@Override
-    protected void dispatchDraw(Canvas canvas) {
-        final int count = getChildCount();
-        final int top = count > 0 ? getChildAt(0).getTop() : 0;
-        final int shelfWidth = mShelfWidth;
-        final int shelfHeight = mShelfHeight;
-        final int width = getWidth();
-        final int height = getHeight();
-        final Bitmap background = this.background;
-
-        for (int x = 0; x < width; x += shelfWidth) {
-            for (int y = top; y < height; y += shelfHeight) {
-                canvas.drawBitmap(background, x, y, null);
-            }
-
-            //This draws the top pixels of the shelf above the current one
-
-            Rect source = new Rect(0, mShelfHeight - top, mShelfWidth, mShelfHeight);
-            Rect dest = new Rect(x, 0, x + mShelfWidth, top);
-
-            canvas.drawBitmap(background, source, dest, null);
-        }
-
-
-        super.dispatchDraw(canvas);
-    }*/
-
 
 }

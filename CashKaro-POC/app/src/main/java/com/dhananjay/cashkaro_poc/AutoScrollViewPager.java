@@ -15,35 +15,37 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
 /**
- * Created by Dhananjay on 17-04-2017.
+ * {@link ViewPager} class which auto scrolls between pages
+ *
+ * @author Dhananjay Kumar
  */
 public class AutoScrollViewPager extends ViewPager {
 
-    public static final int        DEFAULT_INTERVAL            = 3000;
+    public static final int DEFAULT_INTERVAL = 3000;
 
-    public static final int        LEFT                        = 0;
-    public static final int        RIGHT                       = 1;
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
 
-    public static final int        SLIDE_BORDER_MODE_NONE      = 0;
-    public static final int        SLIDE_BORDER_MODE_CYCLE     = 1;
-    public static final int        SLIDE_BORDER_MODE_TO_PARENT = 2;
+    public static final int SLIDE_BORDER_MODE_NONE = 0;
+    public static final int SLIDE_BORDER_MODE_CYCLE = 1;
+    public static final int SLIDE_BORDER_MODE_TO_PARENT = 2;
 
-    private long                   interval                    = DEFAULT_INTERVAL;
-    private int                    direction                   = RIGHT;
-    private boolean                isCycle                     = true;
-    private boolean                stopScrollWhenTouch         = true;
-    private int                    slideBorderMode             = SLIDE_BORDER_MODE_NONE;
-    private boolean                isBorderAnimation           = true;
-    private double                 autoScrollFactor            = 1.0;
-    private double                 swipeScrollFactor           = 1.0;
+    private long interval = DEFAULT_INTERVAL;
+    private int direction = RIGHT;
+    private boolean isCycle = true;
+    private boolean stopScrollWhenTouch = true;
+    private int slideBorderMode = SLIDE_BORDER_MODE_NONE;
+    private boolean isBorderAnimation = true;
+    private double autoScrollFactor = 1.0;
+    private double swipeScrollFactor = 1.0;
 
     private Handler handler;
-    private boolean                isAutoScroll                = false;
-    private boolean                isStopByTouch               = false;
-    private float                  touchX                      = 0f, downX = 0f;
-    private CustomDurationScroller scroller                    = null;
+    private boolean isAutoScroll = false;
+    private boolean isStopByTouch = false;
+    private float touchX = 0f, downX = 0f;
+    private CustomDurationScroller scroller = null;
 
-    public static final int        SCROLL_WHAT                 = 0;
+    public static final int SCROLL_WHAT = 0;
 
     public AutoScrollViewPager(Context paramContext) {
         super(paramContext);
@@ -59,9 +61,10 @@ public class AutoScrollViewPager extends ViewPager {
         handler = new MyHandler(this);
         setViewPagerScroller();
     }
+
     public void startAutoScroll() {
         isAutoScroll = true;
-        sendScrollMessage((long)(interval + scroller.getDuration() / autoScrollFactor * swipeScrollFactor));
+        sendScrollMessage((long) (interval + scroller.getDuration() / autoScrollFactor * swipeScrollFactor));
     }
 
     public void startAutoScroll(int delayTimeInMills) {
@@ -94,7 +97,7 @@ public class AutoScrollViewPager extends ViewPager {
             Field interpolatorField = ViewPager.class.getDeclaredField("sInterpolator");
             interpolatorField.setAccessible(true);
 
-            scroller = new CustomDurationScroller(getContext(), (Interpolator)interpolatorField.get(null));
+            scroller = new CustomDurationScroller(getContext(), (Interpolator) interpolatorField.get(null));
             scrollerField.set(this, scroller);
         } catch (Exception e) {
             e.printStackTrace();
@@ -257,7 +260,7 @@ public class AutoScrollViewPager extends ViewPager {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
-            super.startScroll(startX, startY, dx, dy, (int)(duration * scrollFactor));
+            super.startScroll(startX, startY, dx, dy, (int) (duration * scrollFactor));
         }
     }
 }

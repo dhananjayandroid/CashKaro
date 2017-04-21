@@ -1,13 +1,9 @@
 package com.dhananjay.cashkaro_poc.adapters;
 
-import android.content.Context;
-import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -16,23 +12,31 @@ import android.widget.TextView;
 
 import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.models.Deal;
-import com.dhananjay.cashkaro_poc.utils.CommonUtils;
 import com.dhananjay.cashkaro_poc.utils.listeners.RecyclerViewItemClickListener;
 
 import java.util.ArrayList;
 
 /**
- * Created by DHANANJAY on 26-12-2016.
+ * This class extends @{@link RecyclerView.Adapter<>} and
+ * serves as an adapter for the Deals list
+ *
+ * @author Dhananjay Kumar
  */
-
 public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.MyViewHolder> {
     private ArrayList<Deal> deals;
-    private RecyclerViewItemClickListener clickListener;
 
+    /**
+     * Instantiates a new Deals adapter.
+     *
+     * @param deals the deals
+     */
     public DealsAdapter(ArrayList<Deal> deals) {
         this.deals = deals;
     }
 
+    /**
+     * ViewHolder class for {@link DealsAdapter}
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivDeal;
         private CheckBox cbFavorite;
@@ -57,16 +61,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.MyViewHolder
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_deal, parent, false);
-//        itemView.getLayoutParams().width = getScreenSize(parent.getContext()).x / 2 - (int) (2 * CommonUtils.convertPixelsToDp(90, parent.getContext()));
         return new MyViewHolder(itemView);
-    }
-
-    public static Point getScreenSize(Context context) {
-        final Point size = new Point();
-        final WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        final Display display = wm.getDefaultDisplay();
-        display.getSize(size);
-        return size;
     }
 
     @Override
@@ -83,7 +78,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.MyViewHolder
         return deals.size();
     }
 
-    public void changeContent(ArrayList<Deal> deals){
+    public void changeContent(ArrayList<Deal> deals) {
         this.deals = deals;
         notifyDataSetChanged();
     }

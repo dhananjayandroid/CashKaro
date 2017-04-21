@@ -10,26 +10,40 @@ import android.widget.TextView;
 import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.models.Deal;
 import com.dhananjay.cashkaro_poc.models.OfferGroup;
-import com.dhananjay.cashkaro_poc.utils.listeners.RecyclerViewItemClickListener;
 
 import java.util.ArrayList;
 
-/**
- * Created by DHANANJAY on 26-12-2016.
- */
 
+/**
+ * This class extends @{@link RecyclerView.Adapter<>} and
+ * serves as an adapter for the vertical Deals group
+ *
+ * @author Dhananjay Kumar
+ */
 public class OffersGroupAdapter extends RecyclerView.Adapter<OffersGroupAdapter.MyViewHolder> {
     private ArrayList<OfferGroup> offerGroups;
-    private RecyclerViewItemClickListener clickListener;
 
+    /**
+     * Instantiates a new Offers group adapter.
+     *
+     * @param offerGroups the offer groups
+     */
     public OffersGroupAdapter(ArrayList<OfferGroup> offerGroups) {
         this.offerGroups = offerGroups;
     }
 
+    /**
+     * ViewHolder class for {@link OffersGroupAdapter}
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView tvTitleGroup;
         private RecyclerView rvDeal;
 
+        /**
+         * Instantiates a new My view holder.
+         *
+         * @param view the view
+         */
         public MyViewHolder(View view) {
             super(view);
             tvTitleGroup = (TextView) view.findViewById(R.id.tv_title_group);
@@ -45,7 +59,7 @@ public class OffersGroupAdapter extends RecyclerView.Adapter<OffersGroupAdapter.
         layoutManager.setStackFromEnd(true);
         ((RecyclerView) itemView.findViewById(R.id.rv_deal)).setLayoutManager(layoutManager);
         ((RecyclerView) itemView.findViewById(R.id.rv_deal)).setAdapter(new DealsAdapter(new ArrayList<Deal>()));
-        ((RecyclerView) itemView.findViewById(R.id.rv_deal)).setNestedScrollingEnabled(false);
+        itemView.findViewById(R.id.rv_deal).setNestedScrollingEnabled(false);
         return new MyViewHolder(itemView);
     }
 
@@ -61,4 +75,14 @@ public class OffersGroupAdapter extends RecyclerView.Adapter<OffersGroupAdapter.
         return offerGroups.size();
     }
 
+    /**
+     * Update content.
+     *
+     * @param offerGroups the offer groups
+     */
+    public void updateContent(ArrayList<OfferGroup> offerGroups) {
+        this.offerGroups.clear();
+        this.offerGroups.addAll(offerGroups);
+        notifyDataSetChanged();
+    }
 }
