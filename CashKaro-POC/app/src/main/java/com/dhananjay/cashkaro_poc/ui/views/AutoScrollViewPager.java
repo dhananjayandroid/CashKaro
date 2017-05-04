@@ -1,4 +1,4 @@
-package com.dhananjay.cashkaro_poc;
+package com.dhananjay.cashkaro_poc.ui.views;
 
 import android.content.Context;
 import android.os.Handler;

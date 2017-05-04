@@ -1,4 +1,4 @@
-package com.dhananjay.cashkaro_poc.ui.fragments;
+package com.dhananjay.cashkaro_poc.ui.fragments.dialogs;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 
 import com.dhananjay.cashkaro_poc.R;
-import com.dhananjay.cashkaro_poc.ui.activities.BaseActivity;
 
 /**
  * DialogFragment class for showing progress extends {@link DialogFragment}

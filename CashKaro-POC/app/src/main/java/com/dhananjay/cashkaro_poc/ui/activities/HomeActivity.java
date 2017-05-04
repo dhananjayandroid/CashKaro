@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.dhananjay.cashkaro_poc.AutoScrollViewPager;
-import com.dhananjay.cashkaro_poc.FullHeightGridView;
+import com.dhananjay.cashkaro_poc.ui.views.AutoScrollViewPager;
+import com.dhananjay.cashkaro_poc.ui.views.FullHeightGridView;
 import com.dhananjay.cashkaro_poc.R;
 import com.dhananjay.cashkaro_poc.adapters.OffersGroupAdapter;
 import com.dhananjay.cashkaro_poc.adapters.TopCategoriesGridAdapter;

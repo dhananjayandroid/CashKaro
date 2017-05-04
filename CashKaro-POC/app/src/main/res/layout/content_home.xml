@@ -48,7 +48,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_white_rounded">
 
-                <com.dhananjay.cashkaro_poc.FullHeightGridView
+                <com.dhananjay.cashkaro_poc.ui.views.FullHeightGridView
                     android:id="@+id/gv_top_categories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

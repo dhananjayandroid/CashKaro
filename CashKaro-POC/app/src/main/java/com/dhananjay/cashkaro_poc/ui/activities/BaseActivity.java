@@ -35,7 +35,7 @@ import com.dhananjay.cashkaro_poc.core.api.commands.Command;
 import com.dhananjay.cashkaro_poc.core.helpers.PermissionHelper;
 import com.dhananjay.cashkaro_poc.core.helpers.SharedHelper;
 import com.dhananjay.cashkaro_poc.core.utils.ErrorUtils;
-import com.dhananjay.cashkaro_poc.ui.fragments.ProgressDialogFragment;
+import com.dhananjay.cashkaro_poc.ui.fragments.dialogs.ProgressDialogFragment;
 import com.dhananjay.cashkaro_poc.utils.ConnectivityUtils;
 import com.dhananjay.cashkaro_poc.utils.ToastUtils;
 import com.dhananjay.cashkaro_poc.utils.bridges.ActionBarBridge;

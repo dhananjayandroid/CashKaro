@@ -27,7 +27,7 @@
                 app:layout_collapseMode="parallax"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
-                <com.dhananjay.cashkaro_poc.AutoScrollViewPager
+                <com.dhananjay.cashkaro_poc.ui.views.AutoScrollViewPager
                     android:id="@+id/vp_top_offers"
                     android:layout_width="match_parent"
                     android:layout_height="120dp" />
